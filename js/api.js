@@ -166,6 +166,24 @@ class APIClient {
   async getOperationalStatus() {
     return this.get("/api/status/operational");
   }
+
+  /**
+   * Simula un obstáculo (solo para desarrollo/testing)
+   * @param {object} obstacleData - Datos del obstáculo simulado
+   * @returns {Promise} Resultado de la simulación
+   */
+  async simulateObstacle(obstacleData) {
+    return this.post("/api/simulate/obstacle", obstacleData);
+  }
+
+  /**
+   * Ejecuta una secuencia de movimientos (demo)
+   * @param {object} sequenceData - Datos de la secuencia
+   * @returns {Promise} Resultado de la ejecución
+   */
+  async executeSequence(sequenceData) {
+    return this.post("/api/movements/sequence", sequenceData);
+  }
 }
 
 // Instancia global del cliente API

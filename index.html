@@ -342,6 +342,176 @@
                 comandos enviados se registran con trazabilidad.
               </p>
             </div>
+
+            <!-- Panel de Constructor de Secuencias -->
+            <div
+              class="bg-gray-800 rounded-xl p-5 space-y-4 border-2 border-purple-500/30"
+            >
+              <div class="flex items-center justify-between">
+                <h3
+                  class="text-sm font-bold text-purple-300 uppercase tracking-wide flex items-center gap-2"
+                >
+                  <i class="fas fa-film"></i>
+                  Constructor de Secuencias
+                </h3>
+                <span
+                  class="text-xs px-2 py-1 bg-purple-600/20 text-purple-300 rounded-full border border-purple-500/40"
+                >
+                  Beta
+                </span>
+              </div>
+
+              <!-- Selector de Movimiento -->
+              <div class="space-y-2">
+                <label class="text-xs text-gray-400 font-semibold"
+                  >Agregar movimiento</label
+                >
+                <div class="grid grid-cols-3 gap-2">
+                  <select
+                    id="sequenceCommandSelect"
+                    class="col-span-2 px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-xs focus:outline-none focus:border-purple-500 transition"
+                  >
+                    <option value="forward">⬆️ Adelante</option>
+                    <option value="backward">⬇️ Atrás</option>
+                    <option value="left">↶ Giro 90° Izq</option>
+                    <option value="right">↷ Giro 90° Der</option>
+                    <option value="forward_left">↖️ Vuelta Adel. Izq</option>
+                    <option value="forward_right">↗️ Vuelta Adel. Der</option>
+                    <option value="backward_left">↙️ Vuelta Atrás Izq</option>
+                    <option value="backward_right">↘️ Vuelta Atrás Der</option>
+                    <option value="rotate_left">🔄 Giro 360° Izq</option>
+                    <option value="rotate_right">🔃 Giro 360° Der</option>
+                    <option value="stop">⏹️ Detener</option>
+                  </select>
+                  <input
+                    id="sequenceDurationInput"
+                    type="number"
+                    min="100"
+                    max="10000"
+                    step="100"
+                    value="1000"
+                    placeholder="ms"
+                    class="px-3 py-2 bg-gray-700 border border-gray-600 rounded-lg text-xs text-center focus:outline-none focus:border-purple-500 transition"
+                  />
+                </div>
+                <button
+                  id="addToSequenceBtn"
+                  class="w-full px-3 py-2 bg-purple-600 hover:bg-purple-500 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-2"
+                  type="button"
+                >
+                  <i class="fas fa-plus"></i>
+                  Agregar a Secuencia
+                </button>
+              </div>
+
+              <!-- Lista de Movimientos en Secuencia -->
+              <div class="space-y-2">
+                <div class="flex items-center justify-between">
+                  <label class="text-xs text-gray-400 font-semibold"
+                    >Secuencia actual (<span id="sequenceCount">0</span>
+                    pasos)</label
+                  >
+                  <button
+                    id="clearSequenceBtn"
+                    class="text-xs text-red-400 hover:text-red-300 transition"
+                    type="button"
+                  >
+                    <i class="fas fa-trash mr-1"></i>Limpiar
+                  </button>
+                </div>
+                <div
+                  id="sequenceList"
+                  class="min-h-[100px] max-h-[200px] overflow-y-auto bg-gray-900 rounded-lg p-2 space-y-1 custom-scrollbar"
+                >
+                  <div class="text-center text-gray-500 text-xs py-4">
+                    <i class="fas fa-list text-2xl mb-2"></i>
+                    <p>Sin movimientos. Agrega uno arriba.</p>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Controles de Ejecución y Demos Predefinidos -->
+              <div class="grid grid-cols-2 gap-2">
+                <button
+                  id="executeSequenceBtn"
+                  class="px-3 py-2 bg-green-600 hover:bg-green-500 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-2"
+                  type="button"
+                  disabled
+                >
+                  <i class="fas fa-play"></i>
+                  Ejecutar
+                </button>
+                <button
+                  id="saveSequenceBtn"
+                  class="px-3 py-2 bg-blue-600 hover:bg-blue-500 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-2"
+                  type="button"
+                  disabled
+                >
+                  <i class="fas fa-save"></i>
+                  Guardar
+                </button>
+              </div>
+
+              <!-- Demos Predefinidos -->
+              <div class="space-y-2">
+                <label class="text-xs text-gray-400 font-semibold"
+                  >Cargar demo predefinido</label
+                >
+                <div class="grid grid-cols-3 gap-2">
+                  <button
+                    class="load-demo-btn px-2 py-2 bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-500/40 rounded-lg text-xs font-semibold transition"
+                    data-demo="square"
+                    type="button"
+                  >
+                    <i class="fas fa-square text-xs"></i>
+                    <span class="block text-[10px] mt-1">Cuadrado</span>
+                  </button>
+                  <button
+                    class="load-demo-btn px-2 py-2 bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-500/40 rounded-lg text-xs font-semibold transition"
+                    data-demo="circle"
+                    type="button"
+                  >
+                    <i class="fas fa-circle-notch text-xs"></i>
+                    <span class="block text-[10px] mt-1">Círculo</span>
+                  </button>
+                  <button
+                    class="load-demo-btn px-2 py-2 bg-indigo-600/30 hover:bg-indigo-600/50 border border-indigo-500/40 rounded-lg text-xs font-semibold transition"
+                    data-demo="zigzag"
+                    type="button"
+                  >
+                    <i class="fas fa-wave-square text-xs"></i>
+                    <span class="block text-[10px] mt-1">Zigzag</span>
+                  </button>
+                </div>
+              </div>
+
+              <!-- Simulación de Obstáculos (Dev) -->
+              <div class="pt-2 border-t border-gray-700">
+                <button
+                  id="simulateObstacleBtn"
+                  class="w-full px-3 py-2 bg-orange-600 hover:bg-orange-500 rounded-lg text-xs font-semibold transition flex items-center justify-center gap-2"
+                  type="button"
+                  data-dev-only="true"
+                >
+                  <i class="fas fa-exclamation-triangle"></i>
+                  Simular Obstáculo (Dev)
+                </button>
+              </div>
+
+              <!-- Estado de Ejecución -->
+              <div
+                id="demoStatus"
+                class="text-xs text-gray-400 text-center hidden"
+              >
+                <i class="fas fa-spinner fa-spin mr-2"></i>
+                <span id="demoStatusText">Ejecutando secuencia...</span>
+              </div>
+
+              <p class="text-xs text-gray-500">
+                Construye secuencias personalizadas o carga demos predefinidos.
+                El botón naranja es solo para testing.
+              </p>
+            </div>
           </section>
 
           <!-- Indicadores operativos -->

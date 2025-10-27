@@ -117,6 +117,8 @@ const APP_STATE = {
   history: [],
   autoReconnect: true,
   activeView: "control",
+  customSequence: [], // Secuencia de movimientos personalizada
+  savedSequences: {}, // Secuencias guardadas por nombre
 };
 
 // Utilidades globales
