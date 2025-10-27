@@ -1,0 +1,24 @@
+{
+  "name": "carrito-iot-frontend",
+  "version": "1.0.0",
+  "description": "Frontend web para control remoto de carrito IoT",
+  "main": "index.html",
+  "scripts": {
+    "serve": "python -m http.server 8000",
+    "dev": "python -m http.server 8000"
+  },
+  "keywords": [
+    "iot",
+    "websocket",
+    "carrito",
+    "control-remoto",
+    "tailwind"
+  ],
+  "author": "Tu Nombre",
+  "license": "MIT",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/tu-usuario/carrito-iot-frontend.git"
+  },
+  "homepage": "https://tu-usuario.github.io/carrito-iot-frontend/"
+}
