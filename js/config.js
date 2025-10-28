@@ -22,13 +22,12 @@
 
 const CONFIG = {
   // 🔹 DESARROLLO LOCAL (probando en tu PC):
-  API_BASE_URL: "http://localhost:5500",
-  WEBSOCKET_URL: "http://localhost:5500",
+  // API_BASE_URL: "http://localhost:5500",
+  // WEBSOCKET_URL: "http://localhost:5500",
 
-  // 🔹 PRODUCCIÓN (cuando subas a GitHub Pages):
-  // Descomenta estas líneas y reemplaza con TU IP de EC2:
-  // API_BASE_URL: "http://54.123.45.67:5500",
-  // WEBSOCKET_URL: "http://54.123.45.67:5500",
+  // 🔹 PRODUCCIÓN (GitHub Pages + EC2):
+  API_BASE_URL: "http://54.204.39.238:5500",
+  WEBSOCKET_URL: "http://54.204.39.238:5500",
 
   // 🔹 Con DOMINIO y HTTPS (futuro):
   // API_BASE_URL: "https://api.carrito-iot.com",
